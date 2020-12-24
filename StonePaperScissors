@@ -1,0 +1,84 @@
+import random
+def printChoice(player,choice):
+    if choice==1:
+        print('{} chooses : STONE'.format(player.upper()))
+    elif choice==2:
+        print('{} chooses : PAPER'.format(player.upper()))
+    else:
+        print('{} chooses : SCISSORS'.format(player.upper()))
+
+
+
+i='y'
+userPoints,compPoints=0,0
+name=input('Enter Your Name:')
+
+while i=='y' or i=='Y':
+   
+    print('\nEnter your choice\n\t1 for STONE\n\t2 for PAPER\n\t3 for SCISSORS')
+
+    user=int(input(': '))
+    comp=random.randint(1,3)
+
+   
+    print()   
+
+    
+
+    if user<1 or user>3:
+        print('INVALID INPUT.')
+    else:
+        printChoice(name,user)
+        printChoice('Computer',comp)
+        if user==comp:
+            print()
+            print('DRAW')
+        else:
+            if user==1 :    #STONE
+                if comp==2: #PAPER
+                    print()
+                    print('Computer Wins.')
+                    compPoints+=1
+                elif comp==3:   #SCISSORS
+                    print()
+                    print('{} Wins.'.format(name.upper()))
+                    userPoints+=1    
+                
+            elif user==2:   #PAPER
+                if comp==1: #STONE
+                    print()
+                    print('{} Wins.'.format(name.upper()))
+                    userPoints+=1  
+                elif comp==3:   #SCISSORS
+                    print()
+                    print('Computer Wins.')
+                    compPoints+=1 
+
+            else:   #SCISSORS
+                if comp==2: #PAPER
+                    print()               
+                    print('{} Wins.'.format(name.upper()))
+                    userPoints+=1  
+                elif comp==1:
+                    print()
+                    print('Computer Wins.')
+                    compPoints+=1
+        print()
+        points='POINTS'.center(62,'-')
+        print(points)
+        print('\n{}: {}\n{}: {}'.format(name.upper(),userPoints,'Computer',compPoints))
+
+
+
+    i=input('\nWant to play more(y/n)? : ')
+
+print()    
+final='RESULT'.center(62,'-')
+print(final)
+
+if userPoints==compPoints:
+    print('DRAW.\nBoth played well!! ')
+elif userPoints>compPoints:
+    print('{} WINS.\nCONGRATULATIONS🎉'.format(name.upper()))
+else:
+    print('COMPUTER WINS.\nBetter luck next time 👍')        
